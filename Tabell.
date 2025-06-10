@@ -1,0 +1,75 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Temperatur frå varme til kalde (logskala)
+temp = np.linspace(40000, 2500, 500)
+lum = np.logspace(-4, 6, 500)
+
+fig, ax = plt.subplots(figsize=(10, 8))
+
+# Log-skala og akseretning
+ax.set_xscale("log")
+ax.set_yscale("log")
+ax.set_xlim(50000, 2500)
+ax.set_ylim(1e-4, 1e6)
+
+# Aksetitlar og diagramtittel
+ax.set_xlabel("Temperatur (K)")
+ax.set_ylabel("Lyskraft (i sol-luminositetar)")
+ax.set_title("Hertzsprung–Russell-diagram")
+
+# Funksjon for å plotte stjerner
+def plot_star(temp, lum, name, color):
+    ax.scatter(temp, lum, color=color, s=100, edgecolor="black", label=name)
+    star_data.append((name, lum, color))  # legg til for neste plott
+
+# Liste for å halde stjernedata til neste graf
+star_data = []
+
+# Kjente stjerner frå ulike kategoriar
+plot_star(5778, 1, "Sola", "gold")
+plot_star(9940, 25.4, "Sirius", "#6FB0FF")
+plot_star(3500, 126000, "Betelgeuse", "#FF2F2F")
+plot_star(12100, 120000, "Rigel", "#4A88FF")
+plot_star(10000, 0.012, "Sirius B", "#80BDFF")
+plot_star(3000, 0.0005, "Barnard's Star", "#FF4C1A")
+plot_star(30000, 1_000_000, "Eta Carinae", "royalblue")
+plot_star(11500, 60, "Vega", "#78C7FF")
+plot_star(6000, 100, "Polaris", "ghostwhite")
+plot_star(2650, 0.00078, "EZ Aquari", "#FF5A28")
+plot_star(6443, 5.91, "Eta Arietis", "#F5E063")
+plot_star(39000, 204000, "Theta Orionis C", "#3264FF")
+plot_star(35000, 74100, "Zeta Ophiuchi", "#3E74FF")
+plot_star(44000, 230000, "DH Cephei", "#2C5CFF")
+plot_star(14570, 184, "Beta Sextanis", "#5FB4FF")
+plot_star(28000, 31600, "Beta Scorpii", "#3A6FFF")
+plot_star(13000, 111, "H Centaurii", "#66C1FF")
+plot_star(12600, 460, "Kappa2 Coronae Australis", "#6DC9FF")
+plot_star(12039, 51, "Zeta Coronae Australis", "#74D1FF")
+
+# Legg til forklaring
+ax.legend(loc="lower left", fontsize="small")
+
+# Rutemønster
+ax.grid(True, which="both", linestyle="--")
+
+plt.tight_layout()
+plt.show()
+plt.savefig("HR_diagram")
+
+# === Ekstra graf: Lyskraft for kvar stjerne ===
+fig2, ax2 = plt.subplots(figsize=(12, 6))
+
+names = [s[0] for s in star_data]
+luminosities = [s[1] for s in star_data]
+colors = [s[2] for s in star_data]
+
+ax2.bar(names, luminosities, color=colors, edgecolor="black")
+ax2.set_yscale("log")
+ax2.set_ylabel("Lyskraft (i sol-luminositetar)")
+ax2.set_title("Lyskraft for utvalde stjerner")
+
+plt.xticks(rotation=45, ha="right")
+plt.tight_layout()
+plt.show()
+plt.savefig("Stjerneliste")
