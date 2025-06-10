@@ -31,7 +31,7 @@ plot_star(10000, 0.012, "Sirius B", "#80BDFF")      # Kvit dverg
 plot_star(3000, 0.0005, "Barnard's Star", "#FF4C1A")   # Raud dverg
 plot_star(30000, 1_000_000, "Eta Carinae", "royalblue") # Hyperkjempe
 plot_star(11500, 60, "Vega", "#78C7FF")                 # A-type hovudserie
-plot_star(6000, 100, "Polaris", "#F0DC5C")            # Gul kjempe (Cepheide)
+plot_star(6000, 100, "Polaris", "ghostwhite")            # Gul kjempe (Cepheide)
 plot_star(2650, 0.00078, "EZ Aquari", "#FF5A28")
 plot_star(6443, 5.91, "Eta Arietis", "#F5E063")
 plot_star(39000, 204000, "Theta Orionis C", "#3264FF")
